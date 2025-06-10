@@ -14,10 +14,13 @@ spec:
     spec:
       containers:
         - name: php
-          image: php-app:latest
+          #imagem customizada criada
+          image: php-app:latest #meuusergithub/biblioteca_php:1
           ports:
+          #apache ou php embutido escutando na porta
             - containerPort: 80
 ---
+#Service para expor o app php para fora do cluster
 apiVersion: v1
 kind: Service
 metadata:
@@ -25,7 +28,8 @@ metadata:
 spec:
   type: NodePort
   ports:
-    - port: 80
-      nodePort: 30080
+    - port: 80               #porta dentro do container
+      targetPort: 80         #porta do container
+      nodePort: 30080        #porta no host(mapeada)
   selector:
-    app: php
+    app: php #conecta 
