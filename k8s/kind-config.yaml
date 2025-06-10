@@ -9,3 +9,8 @@ nodes:
         #porta acessivel no seu navegador
         hostPort: 30080
         protocol: TCP
+
+      #porta externa mysql
+      - containerPort: 30306
+        hostport: 30306
+        protocol: TCP
